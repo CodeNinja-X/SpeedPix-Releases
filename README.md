@@ -4,7 +4,9 @@ SpeedPix Pro is a desktop app that automates Photoshop workflows for designers a
 
 # SpeedPix Pro
 
-🚀 An advanced Photoshop automation tool for batch renaming, grading, and auto-resizing.
+SpeedPix Pro is a **sublimation automation software** for Photoshop.  
+It helps with **batch resizing, auto renaming, and grading** for printing.
+
 
 ---
 
