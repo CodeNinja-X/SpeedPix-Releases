@@ -16,3 +16,5 @@ SpeedPix Pro is a desktop app that automates Photoshop workflows for designers a
 👉 Click the button above to download the latest `.exe` build.
 
 ---
+## 🆕 Versions
+- **v2.6.10** – Latest release
