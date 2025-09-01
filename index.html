@@ -14,37 +14,101 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* --- Layout: single-screen, no scroll --- */
-    html,body{height:100%;}
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      height:100vh; /* lock to viewport height */
-      overflow:hidden; /* no scroll */
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(180deg, #0f172a 0%, #071028 60%);
-      color: #e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:32px;
+    /* --- Base layout: single-screen, no scroll --- */
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
     }
 
-    /* --- Card --- */
-    .card{
-      width:min(1100px, 96%);
-      height:min(720px, 86vh);
-      border-radius:18px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap:28px;
-      padding:28px;
-      align-items:center;
+    * { box-sizing: border-box; }
+
+    /* --- Enhanced lighter liquid glow from bottom --- */
+    body {
+      background: #0f172a;
+      position: relative;
+      z-index: 0;
+      will-change: transform;
     }
+    body::before, body::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2; /* Behind 3D effect */
+      opacity: 0.2;
+    }
+    body::before {
+      background: radial-gradient(circle at 50% 100%, rgba(147, 197, 253, 0.5) 0%, transparent 80%);
+      animation: liquidFlow1 16s ease-in-out infinite;
+    }
+    body::after {
+      background: radial-gradient(circle at 50% 100%, rgba(167, 243, 208, 0.45) 0%, transparent 80%);
+      animation: liquidFlow2 20s ease-in-out infinite;
+    }
+
+    @keyframes liquidFlow1 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+      50% { transform: translate(3%, 2%) scale(1.03); opacity: 0.3; }
+      100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+    }
+    @keyframes liquidFlow2 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+      50% { transform: translate(-3%, -2%) scale(1.04); opacity: 0.28; }
+      100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+    }
+
+    /* --- 3D Fabric Wave Background --- */
+    #vanta-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Between glow and card */
+    }
+    /* Fallback for mobile or unsupported devices */
+    @media (max-width: 640px) or (pointer: coarse) {
+      #vanta-bg {
+        background: url('https://images.unsplash.com/photo-1551489188-e0965926f5f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+        background-size: cover;
+      }
+    }
+
+    /* --- Card (clean glass effect without emboss) --- */
+    .card {
+      width: min(1300px, 90%);
+      max-height: 88vh;
+      border-radius: 24px;
+      background: linear-gradient(313deg, rgb(83 19 195 / 28%), rgb(255 255 255 / 0%));
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 60px rgba(2, 6, 23, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 80px;
+      padding: 50px;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .card.visible { opacity: 1; transform: translateY(0); }
+    .card:hover { box-shadow: 0 25px 70px rgba(2,6,23,1); }
 
     /* --- Left content --- */
     .brand {
@@ -52,25 +116,6 @@
       gap: 24px;
       align-items: center;
       margin-bottom: 16px;
-    }
-    .logo {
-      width: 96px;
-      height: 96px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #6ee7b7, #3b82f6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: #021627;
-      font-size: 32px;
-      box-shadow: 0 10px 24px rgba(59,130,246,0.4);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      position: relative;
-    }
-    .logo:hover {
-      transform: scale(1.06) rotate(4deg);
-      box-shadow: 0 12px 28px rgba(59,130,246,0.5), 0 0 20px rgba(110,231,183,0.3);
     }
 
     h1 {
@@ -310,7 +355,6 @@
     }
     @media (max-width: 640px) {
       .card { padding: 24px; border-radius: 20px; }
-      .logo { width: 84px; height: 84px; font-size: 28px; }
       h1 { font-size: 30px; }
       .features { grid-template-columns: 1fr; gap: 14px; }
       .cta-row { flex-direction: column; align-items: stretch; gap: 12px; }
@@ -361,8 +405,21 @@
 
     <aside class="panel">
       <div class="preview" aria-hidden="true">
-        <!-- Replace this <img> src with a real screenshot or mockup image hosted in your repo -->
-        <img src="https://raw.githubusercontent.com/CodeNinja-X/SpeedPix-Releases/main/preview-placeholder.png" alt="SpeedPix preview" />
+        <svg 
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="390px" 
+          height="500px"
+          viewBox="0 0 390 500"
+          preserveAspectRatio="xMidYMid meet"
+          class="loaded"
+          id="previewSvg"
+        >
+          <path fill-rule="evenodd" stroke="rgb(255, 255, 255)" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="rgb(0, 0, 0)"
+            d="M384.614,496.167 C257.354,495.889 130.055,495.611 2.795,495.334 C2.795,427.022 2.795,358.689 2.795,290.377 C2.795,269.711 4.386,205.395 4.386,205.395 C4.386,205.395 62.013,180.085 28.250,36.264 C62.186,25.156 96.132,14.045 130.068,2.937 C136.696,9.047 143.326,15.158 149.955,21.267 C163.413,28.528 221.847,29.022 236.659,22.100 C243.552,15.991 250.448,9.880 257.341,3.770 C271.241,6.025 351.909,31.224 359.159,37.930 C347.835,84.811 347.140,189.897 386.205,207.061 C386.205,303.420 384.614,399.808 384.614,496.167 Z"/>
+          <text kerning="auto" font-family="Myriad Pro" fill="none" transform="matrix(2.48467729658449, 0, 0, 2.60130443930149, 195, 130)" font-size="16px" text-anchor="middle"><tspan id="randomName" font-size="16px" font-family="Athletic, Impact, sans-serif" fill="#FFFFFF">JONES</tspan></text>
+          <text kerning="auto" font-family="Myriad Pro" fill="none" transform="matrix(12.30398716203319, 0, 0, 12.74070280316502, 195, 290)" font-size="16px" text-anchor="middle"><tspan id="randomNumber" font-size="16px" font-family="NBA Bulls, Impact, sans-serif" fill="#FFFFFF">24</tspan></text>
+        </svg>
       </div>
 
       <div class="panel-footer">
@@ -384,15 +441,110 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
   <script>
-    // Lightweight behaviors: replace links with real targets
-    document.getElementById('downloadBtn').addEventListener('click', function(e){
-      e.preventDefault();
-      // TODO: change to your real GitHub Release raw URL
-      window.location.href = 'https://github.com/CodeNinja-X/SpeedPix-Releases/releases/download/v2.7.0/SpeedPix-setup.exe';
-    });
-    document.getElementById('repoBtn').addEventListener('click', function(e){
-      e.preventDefault();
-      window.open('https://github.com/CodeNinja-X/SpeedPix-Releases', '_blank');
+    // Initialize Vanta.js WAVES effect
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if WebGL is supported
+      const isWebGLSupported = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          return !!window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+        } catch (e) {
+          return false;
+        }
+      };
+
+      if (isWebGLSupported()) {
+        VANTA.WAVES({
+          el: "#vanta-bg",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0x1a2639, // Dark fabric-like blue-gray
+          shininess: 20.00, // Subtle sheen for fabric texture
+          waveHeight: 10.00, // Gentle waves for textile flow
+          waveSpeed: 0.5, // Slow, flowing motion
+          zoom: 0.85 // Slightly zoomed out for depth
+        });
+      }
+
+      // Card entrance animation
+      const card = document.querySelector('.card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            card.classList.add('visible');
+            observer.unobserve(card);
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(card);
+
+      // SVG load animation
+      const previewSvg = document.getElementById('previewSvg');
+      setTimeout(() => {
+        previewSvg.classList.add('loaded');
+      }, 100);
+
+      // Download button with loading state
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        downloadBtn.classList.add('loading');
+        downloadBtn.textContent = 'Downloading...';
+        setTimeout(() => {
+          window.location.href = 'https://github.com/CodeNinja-X/SpeedPix-Releases/releases/download/v2.7.0/SpeedPix-setup.exe';
+          downloadBtn.classList.remove('loading');
+          downloadBtn.textContent = 'Download (.exe)';
+        }, 1200);
+      });
+
+      // GitHub link
+      document.getElementById('repoBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open('https://github.com/CodeNinja-X/SpeedPix-Releases', '_blank');
+      });
+
+      // Generate button functionality
+      const generateBtn = document.getElementById('generateBtn');
+      const randomNameElement = document.getElementById('randomName');
+      const randomNumberElement = document.getElementById('randomNumber');
+      const names = ['GBKGIYRC', 'LZOVKVPA', 'SLRYX', 'GSHTM', 'PUGCNJ', 'QGYCD', 'CDJPRLJK', 'ZLYT', 'HIFMVNZ', 'ISMS', 'DQATQ', 'EXCXI', 'RWWAVQK', 'RHCG', 'EIDGOSTE', 'LTDNNTC', 'NGRLYVX', 'CYNKXUK', 'GBPJ', 'LOCB', 'LWKGRX', 'KMYYYDF', 'GACC', 'JXOUACOJ', 'LDWGMO', 'RWSM', 'YLMOB', 'ACQP', 'IADFO', 'SYDVT', 'VOXZTPJ', 'RVDIM', 'XQLD', 'XAJOLW', 'RIEFMXDT', 'WXVPYP', 'VCHC', 'TVGVGIQL', 'PRQK', 'OIPPE', 'YGQXXCP', 'OYLVXN', 'ZGHSX', 'RXBPBUV', 'SNZICZJX', 'IMYEQAX', 'CWUX', 'QDUZRFG', 'JPRURNFQ', 'UOLD', 'XZAETGJ', 'PCCMWK', 'EBPNOT', 'JPIWI', 'LKVIBH', 'NHJO', 'RTRUX', 'TKYUFZ', 'EWNBOP', 'KQGAOR', 'CEQNMF', 'AZUZJ', 'XGZCYPWG', 'LGPGKTKU', 'DAVXCBLB', 'GYCIS', 'BZLKMH', 'ZXYYJ', 'HWVIBDS', 'DQAADMY', 'CRURZ', 'MAPR', 'GWOOWWND', 'OREO', 'SPJW', 'LPCUI', 'QSWKFN', 'ZQIGFA', 'KOVXPTNR', 'DMBE', 'AMJIHTZA', 'YAOCGAVI', 'DKXQSKYQ', 'RROT', 'DTPO', 'HHHD', 'KCSY', 'LGKSNJDQ', 'DSYDZU', 'JUGDNPJ', 'KLCDD', 'THQGPPMS', 'EAQNGJRU', 'GHEO', 'PPIG', 'EGQUVRN', 'ZQYVOLUM', 'OANUBV', 'IMTKSS', 'DUKC', 'CVXDQGZS', 'PWAULFEE', 'CGCQ', 'AZYPLPYV', 'GNYVO', 'QDIDEVRB', 'GYIOL', 'ZERJUS', 'FNUOMPOO', 'DTXFLW', 'WVAGQNY', 'UBZGEVG', 'HOAW', 'ERWV', 'IUCT', 'YXAUIVQ', 'BUXYTCR', 'ASDZ', 'GPWAA', 'TJFZTPO', 'YMBCC', 'RGMCTILG', 'HSAQFHIG', 'ICPIV', 'VRMY', 'VROLBNNQ', 'XSAQF', 'BNTYGXB', 'BPML', 'PCCJZ', 'NKGKCVQ', 'RSOVWJLX', 'TZJUBKOM', 'VYSAWBQS', 'AUZA', 'KOGVCL', 'CYLYCK', 'JBBIMWH', 'BVZTRZ', 'VDKQZV', 'ZEFNFYH', 'HZYLDDX', 'LNTEJZI', 'VGWGC', 'HISNFQHY', 'ZUTCSM', 'CAVEGV', 'XITSZ', 'DOJVLMMK', 'DYOFKUZ', 'IFJXI', 'XNQYGV', 'DKPWLA', 'RLSY', 'TQTBB', 'UZGZIGL', 'CKYEAT', 'NWDKS', 'ZWIUZ', 'FCRPXN', 'UUXED', 'LBCMH', 'RMGCT', 'HRDOG', 'XBKHO', 'QGPQZOC', 'WCCFHAQ', 'WTIW', 'DSUWWS', 'JHSB', 'TGDZV', 'FIGVLA', 'NLNX', 'YCJKL', 'WIAVWSEY', 'AOKUXA', 'VSKDSAJW', 'UASYAOPQ', 'NGFGBFN', 'GBPIECE', 'TOUYQRG', 'URAVD', 'YIFEI', 'PNZEJ', 'AOOXGVMY', 'JRTUO', 'QZOEG', 'EWHOEEC', 'WPULETW', 'OCXN', 'OHMGRY', 'BDVJZ', 'KQJQ', 'RONKPYC', 'CNDFGIOL', 'OEWXFW', 'CYZTY', 'ZKEAU', 'JVBAJST', 'ZZENSHME', 'FSSIQS', 'KQYEBXI', 'BQFZVJAJ', 'WPYVDZ', 'AYCPTY', 'GJII', 'BDRL', 'NVCSSZUI', 'HMOIEQB', 'OYCKGX', 'SFFDPGJD', 'WMOZ', 'LDNDO', 'GHYWNL', 'WZINR', 'VDETN', 'APKDEQA', 'GALFSODW', 'DMBRI', 'ISNH', 'LUBNN', 'YBPPC', 'PTDAK', 'XNWSUZA', 'HIMRPGRC', 'VFWSW', 'XSRQ', 'KVLYXE', 'CLXB', 'MFMZGSF', 'JIIKBIZ', 'KRHGW', 'LRFCNZ', 'MQKNNLX', 'HPVOFVI', 'EGBS', 'BZTHKWJ', 'HIGB', 'BZTT', 'IKDEM', 'RSMWCE', 'IVZW', 'DEKUBL', 'QMAH', 'ZFJV', 'XFOER', 'GJWH', 'DFZPV', 'PZNS', 'XQEAB', 'XSVPB', 'MEMH', 'BZRRTUYH', 'FEECXMM', 'LKLM', 'QXKUZ', 'TVCTC', 'YFKUECD', 'TLTNX', 'WIMBN', 'OTEG', 'UIOT', 'LNTBDS', 'FPRLKF', 'FWZBMMFI', 'FZLPFC', 'EULXLX', 'YIBO', 'TYNXZIQU', 'DUNBQT', 'DNDTQMS', 'YFKXHHN', 'HDGWTZ', 'VDWYW', 'GEPDL', 'QKJDMGJ', 'EHCUJ', 'ZQIK', 'XOZTFU', 'ACZOPI', 'DMRA', 'OHKXYE', 'QTEPOWSQ', 'CDTAW', 'MIWMJRV', 'TJUGW', 'ZYZQQ', 'YRILIGVO', 'IIAHT', 'NWAJORN', 'KJNK', 'JAHUTARB', 'GOBMTDD', 'PLUUQZX', 'IIUBTS', 'USLZWY', 'OVPIHG', 'ZEGIVSO', 'PKHSSNL', 'HENAR', 'CFNM', 'BMLLLJC', 'UCVKEC', 'QGWVIC', 'GBVA', 'XNORBQ', 'QRIXUZA', 'YQYVNP', 'JAGLONU', 'ZZTMP', 'VUMPQ', 'LAVRHYJB', 'FWNHR', 'KVJH', 'QRLBPMGV', 'EORBXE', 'CDSID', 'PMXOEJNG', 'LFIEBFXB', 'OHCN', 'EWCHF', 'MCEOHQ', 'MBVLTZGL', 'WBBLNT', 'SRPPRHK', 'CYAXNFM', 'ZGHDO', 'ZSKGFQ', 'LQJESP', 'XXOEQ', 'AIFJ', 'JHMIX', 'CKNAJPZ', 'SBLAI', 'FGGD', 'BCJP', 'KTLL', 'VOHI', 'UZVVBOEL', 'RZBDT', 'PGALWKMG', 'SVGFKXT', 'VBCAQVBE', 'EZRW', 'TTER', 'UGDKM', 'UDRWAWG', 'VAJG', 'MBKA', 'KAUNTHR', 'UTRZDM', 'QIEREAZO', 'LEJAN', 'OLQJMB', 'UZGZIGL', 'MWNDFYQG', 'NMJYAZDU', 'MDNABO', 'GUUOU', 'WRXKIHH', 'HUYA', 'DGURKBC', 'NCXX', 'UQIPAZD', 'QNBPLX', 'TFXT', 'OLJAKHJ', 'SDFLC', 'OSYZKKD', 'LHLL', 'LXURT', 'BHVR', 'UWBEEWBZ', 'YKDTFK', 'WYWKDQ', 'NPZYHU', 'RSPLGFF', 'HTECL', 'DSEYCBQN', 'IJLD', 'AFKGTB', 'VICCIJ', 'SUUGAHUP', 'NDAWZJQ', 'EJQGDULC', 'SAIALS', 'KFDCR', 'WUOZ', 'UULCVNTF', 'VDIMPHXG', 'TICR', 'OVRUK', 'ZBCD', 'RWERKMHR', 'KWVJTLZU', 'QOMLZZNT', 'XAZUEVNC', 'FXPZ', 'ALFHL', 'AMMMTVR', 'ZDTGIX', 'AFQESB', 'JMSHLT', 'CPZH', 'BBLFVA', 'IPNCI', 'XBUWYV', 'TGEAW', 'PRSE', 'HZJUXYRU', 'RZORBKA', 'ETYEH', 'TNXGFUY', 'CNXD', 'HRGY', 'BXZLD', 'XPWM', 'HXDLXFK', 'GUEJC', 'LIPIDF', 'ZHVRHCZY', 'SGBSKSSX', 'RPOUCCVT', 'SERXIWUZ', 'IFYSFFMN', 'IXDJHL', 'IZNY', 'CLBTK', 'HIKCFDSE', 'VDQRNDVW', 'PAKOYU', 'KDMIOAZ', 'LGMKP', 'OEFDMX', 'ICEZTZ', 'CKTHMUR', 'YQLG', 'ASGAYL', 'XFCGYGYE', 'BVXFQYHG', 'AFZWH', 'OTKMRQ', 'OVZKRCXW', 'EUELNGDW', 'MHVKQ', 'ZFLOOYFG', 'SCPNA', 'QUVCVNZY', 'CIVLXL', 'ZWKWEM', 'HNGUS', 'CTMSTLM', 'VXUJBM', 'EPOWZI', 'IGCUJAF', 'TNKRWNMW', 'AWHVFD', 'YKLXTDA', 'LZVYJIF', 'UATD', 'WGPJOG', 'RPZD', 'JVYTTKA', 'ADZRDM', 'AIYDUFV', 'UTQWQPDQ', 'VOIVVA', 'EOECLAAY', 'ODLC', 'CJDZNAA', 'CYWMMV', 'WNFTFWMI', 'DRKUV', 'TCKNUH', 'FZTJ', 'PSEC', 'NESLF', 'DFJTW', 'YJEAXL', 'DAIDMG', 'NSQMGM', 'LVLRA', 'CTVHC', 'FSOTVY', 'DVSQL', 'RIPVULM', 'GCILPU', 'ASGHV', 'FHPHJTJT', 'MRZPMYD', 'AMEZ', 'OXXPSCRA', 'ELJZNV', 'SOSSFNC', 'QSXBZF', 'TXSMAG', 'DFOEIOIZ', 'TWTENCSD', 'UTXEGYCV', 'FFOMXEYD', 'GXDJTJS', 'ONZRPY', 'TVWIXVH', 'XKYI', 'UUTFTJ', 'PGHRSJ', 'RDMM', 'RFWFVXVT', 'WKOH', 'SZCALYH', 'PIFA', 'YRKJNOV', 'QUKYXPR', 'XEVK', 'MIRJN', 'XIHSB', 'QGFEINS', 'XFJLMXLD', 'RYYTOQV', 'GREKXH', 'AMMM', 'NBESWHRA', 'PKASSCZ', 'SFJMXTNL', 'KDNYA', 'UBXHK', 'WRXKEZX', 'FSXG', 'UZAX', 'YKIVEQK', 'FYXGPOXB', 'DHIVYT', 'INNKYJI', 'VKNDJKBG', 'MHQYI', 'YSDS', 'INRKS', 'WYFQ', 'WJOFCDLN', 'GWTWLPV', 'ETCXOPDM', 'PIEMXX', 'WURL', 'IQMXGKJ', 'LECZLAFT', 'YYXKI', 'AJWMZ', 'GONEE', 'HSSDRWX', 'JFHWNSHN', 'LYYMCEIN', 'FYYSS', 'NOIBPP', 'HXTYQHXL', 'FPZAUHQZ', 'BSKHNJ', 'VICXIL', 'MNGDOQWG', 'QZTUDKK', 'XOJH', 'MDYYQ', 'JZTJB', 'KUPLHP', 'NNPHE', 'XIZC', 'JUON', 'MGAYN', 'OUZPSPQ', 'LIOOXCYL', 'HUMUBJ', 'VYJBNB', 'RSZEPYZ', 'TTZF', 'UWRIDUD', 'AAFWUOCF', 'UFXULGES', 'GMNEF', 'KKMHNURO', 'MVXRTUND', 'ZPWFIG', 'PJOTUD', 'YDPPFU', 'RWGED', 'XZFDE', 'YCQNIX', 'VWEOMMF', 'IJMH', 'GWNXPN', 'XXESG', 'MUIND', 'MQVOCJXQ', 'MNOTBAOW', 'BOSCLXD', 'TMYUXXGE', 'RATZTHW', 'HZQKRL', 'BRGQHV', 'GGTMND', 'ZJKO', 'CLKYQVHZ', 'EIJCXQ', 'XIPPGJ', 'FQKUWEY', 'UBOCNI', 'DOOD', 'ZHYNJWL', 'WRAYTU', 'DASKDKQC', 'AIBQCNAS', 'CKEQWYMS', 'HGMVCOFW', 'HUFJ', 'UUPFD', 'WMACJS', 'GCJGXWJ', 'XKZZXUD', 'PHHYOZEL', 'UXVMN', 'BBAC', 'UAFTDN', 'QPRONSBJ', 'UTAZNO', 'PXLPHS', 'YDJC', 'QWGKKSER', 'JCRFPSG', 'HHDYW', 'ZUTK', 'MYOE', 'IOJPGTH', 'GLWRX', 'QGMVE', 'BCDFBOW', 'KLGWTAN', 'VLSJWO', 'EIYDWVNN', 'IEBLYCMB', 'ZZMT', 'BIHTVV', 'WQAW', 'GLKUCHC', 'UBKCD', 'RGTNJ', 'HOPGIX', 'PVWH', 'JPTA', 'LBNO', 'SDDZTFA', 'XJVN', 'XFHSGP', 'JEJXOQ', 'RDBOAVON', 'JVCVST', 'GDRXVKYY', 'CJMETG', 'AIBFOGLB', 'YPVP', 'FXZO', 'LCAASAV', 'KOHPIXLZ', 'ZQGXWGSZ', 'GPSOGQJR', 'DYTHT', 'CCJUO', 'JCLKPSP', 'HDFGOWM', 'KHMRNOYW', 'LGQO', 'OASCO', 'NOXJ', 'VOOLI', 'DVXABAO', 'MXOZ', 'WNVCBPL', 'ISQSYS', 'LJESRYSK', 'ZOUZBFEC', 'SZLH', 'OFOANWN', 'MSSLK', 'XOHVEO', 'ECYT', 'FZIH', 'JGZL', 'OWETII'];
+
+      let animationInterval;
+      let changeCount = 0;
+      const maxChanges = 685;
+      const intervalTime = 5; // ms for very fast animation
+
+      function getRandomName() {
+        return names[Math.floor(Math.random() * names.length)];
+      }
+
+      function getRandomNumber() {
+        return Math.floor(Math.random() * 90) + 10;
+      }
+
+      function animateChanges() {
+        if (changeCount < maxChanges) {
+          randomNameElement.textContent = getRandomName();
+          randomNumberElement.textContent = getRandomNumber();
+          changeCount++;
+        } else {
+          clearInterval(animationInterval);
+          generateBtn.disabled = false;
+          generateBtn.textContent = 'Generate';
+        }
+      }
+
+      generateBtn.addEventListener('click', () => {
+        generateBtn.disabled = true;
+        generateBtn.textContent = 'Generating...';
+        changeCount = 0;
+        animationInterval = setInterval(animateChanges, intervalTime);
+      });
     });
   </script>
 </body>
