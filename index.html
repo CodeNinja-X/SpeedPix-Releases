@@ -111,12 +111,18 @@
     .card:hover { box-shadow: 0 25px 70px rgba(2,6,23,1); }
 
     /* --- Left content --- */
-    .brand {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      margin-bottom: 16px;
-    }
+/* SVG wordmark sizing */
+.brand { margin: 0; line-height: 1; }
+.brand svg {
+  display: block;
+  width: clamp(220px, 32vw, 520px); /* responsive: min..pref..max */
+  height: auto;                     /* keep aspect ratio */
+}
+
+/* optional: mobile tweak */
+@media (max-width: 640px) {
+  .brand h1 svg { width: 260px; }
+}
 
     h1 {
       margin: 0 0 10px;
@@ -126,7 +132,7 @@
       font-weight: 800;
     }
     p.lead {
-      margin: 0 0 24px;
+      margin: 12px 0 40px;
       color: #bebebe;
       font-size: 16px;
       line-height: 1.6;
@@ -200,9 +206,8 @@
       overflow: hidden;
     }
     .btn.primary {
-      background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+      background: linear-gradient(135deg, #e80a4f, #e80a4f);
       color: white;
-      box-shadow: 0 10px 28px rgba(14,165,233,0.4);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
     }
@@ -256,7 +261,7 @@
     }
 
     .meta {
-      margin-top: 18px;
+      margin-top: 30px;
       color: #d1d9e6;
       font-size: 14px;
       opacity: 1;
@@ -376,7 +381,28 @@
       <div class="brand">
         <div>
           <div style="display:flex;align-items:center;gap:14px;">
-            <h1>SpeedPix Pro</h1>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 78.01" width="220" height="38" role="img" aria-label="SpeedPix Logo">
+    <title>SpeedPix Logo</title>
+    <defs>
+      <style>.cls-1{fill:#e80a4f;}.cls-2{fill:#fff;}</style>
+    </defs>
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layer_1-2" data-name="Layer 1">
+        <path class="cls-1" d="M132.46,0l-4,7.61c-5.06,9.7-14.07,15.61-23.78,15.61H78.34L90.45,0Z"/>
+        <polygon class="cls-1" points="78.34 15.78 66.23 39 24.22 39 36.33 15.78 78.34 15.78"/>
+        <polygon class="cls-1" points="108.24 39 96.13 62.23 54.12 62.23 66.23 39 108.24 39"/>
+        <path class="cls-1" d="M54.12,54.79,42,78H0L4,70.4C9,60.7,18,54.79,27.75,54.79Z"/>
+        <path class="cls-2" d="M186.76,19.57l-3.84,9.25H164.2a2,2,0,0,0-1.46.53,2.14,2.14,0,0,0-.51,1.53c0,.84.83,1.57,2.48,2.16a54.6,54.6,0,0,0,6.64,1.82,44.29,44.29,0,0,1,8.05,2.6q7.53,3.38,7.4,10.61A9.4,9.4,0,0,1,182.55,56a14.28,14.28,0,0,1-8.37,2.45h-24.5l3.84-9.25h20.66a2.62,2.62,0,0,0,1.55-.36,1,1,0,0,0,.39-.88,2.38,2.38,0,0,0-1.7-2.28,41,41,0,0,0-7.55-2.14A39.13,39.13,0,0,1,158,40.69q-6.4-3-6.43-9.81a10.32,10.32,0,0,1,4-8.4,13.28,13.28,0,0,1,8.67-2.91Z"/>
+        <path class="cls-2" d="M200.3,58.44H189.6V19.57h25a13.57,13.57,0,0,1,10,4.1,13.41,13.41,0,0,1,3.82,9.74,13.37,13.37,0,0,1-3.82,9.71,13.53,13.53,0,0,1-10,4.1H200.74L205.35,38h9.23a2.74,2.74,0,0,0,1.94-.87,5.66,5.66,0,0,0,1.17-3.69,5.71,5.71,0,0,0-1.17-3.72,2.74,2.74,0,0,0-1.94-.87H200.3Z"/>
+        <path class="cls-2" d="M242.26,28.82V58.44H231.55V19.57h35.57l-3.83,9.25Zm24.62,20.37L263,58.44H242.77l4.69-9.25ZM246.61,34.38h20.54l-3.84,9.25H243Z"/>
+        <path class="cls-2" d="M280.28,28.82V58.44H269.57V19.57h35.58l-3.84,9.25ZM304.9,49.19l-3.83,9.25H280.79l4.69-9.25ZM284.63,34.38h20.54l-3.84,9.25H281Z"/>
+        <path class="cls-2" d="M318.3,28.82V58.44H307.6V19.57h20.17a19.7,19.7,0,0,1,14.5,6A18.34,18.34,0,0,1,347.93,39a18.44,18.44,0,0,1-5.64,13.48,19.76,19.76,0,0,1-14.52,6h-9l4.69-9.25h4.27a8.69,8.69,0,0,0,6.39-2.74A10.11,10.11,0,0,0,337.22,39a10.15,10.15,0,0,0-3-7.45,8.83,8.83,0,0,0-6.41-2.72Z"/>
+        <path class="cls-1" d="M362,58.44h-10.7V19.57h25a13.57,13.57,0,0,1,10,4.1,13.41,13.41,0,0,1,3.82,9.74,13.37,13.37,0,0,1-3.82,9.71,13.53,13.53,0,0,1-10,4.1H362.47L367.08,38h9.23a2.74,2.74,0,0,0,1.94-.87,5.66,5.66,0,0,0,1.17-3.69,5.71,5.71,0,0,0-1.17-3.72,2.74,2.74,0,0,0-1.94-.87H362Z"/>
+        <path class="cls-1" d="M405.69,58.44H395V19.57h10.71Z"/>
+        <path class="cls-1" d="M437.4,19.57H450L436.09,39,450,58.44H437.4l-7.63-10.63-7.59,10.63H409.57L423.49,39,409.57,19.57h12.61l7.59,10.63Z"/>
+      </g>
+    </g>
+  </svg>
           </div>
           <p class="lead">Revolutionize your sublimation workflow with advanced Photoshop automation: seamless batch resizing</p>
         </div>
@@ -402,7 +428,7 @@
           <div class="badge">Photoshop</div>
           <div class="badge">Batch</div>
         </div>
-        <div style="margin-left:auto" class="small">v2.7.0 • Released: 2025-08-31</div>
+        <div style="margin-left:auto" class="small">macOS Coming Soon</div>
       </div>
     </div>
 
@@ -418,7 +444,7 @@
           class="loaded"
           id="previewSvg"
         >
-          <path fill-rule="evenodd" stroke="rgb(255, 255, 255)" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="rgb(5, 10, 24)"
+          <path fill-rule="evenodd" stroke="rgb(135 135 135)" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="rgb(25 30 41)"
             d="M384.614,496.167 C257.354,495.889 130.055,495.611 2.795,495.334 C2.795,427.022 2.795,358.689 2.795,290.377 C2.795,269.711 4.386,205.395 4.386,205.395 C4.386,205.395 62.013,180.085 28.250,36.264 C62.186,25.156 96.132,14.045 130.068,2.937 C136.696,9.047 143.326,15.158 149.955,21.267 C163.413,28.528 221.847,29.022 236.659,22.100 C243.552,15.991 250.448,9.880 257.341,3.770 C271.241,6.025 351.909,31.224 359.159,37.930 C347.835,84.811 347.140,189.897 386.205,207.061 C386.205,303.420 384.614,399.808 384.614,496.167 Z"/>
           <text kerning="auto" font-family="Myriad Pro" fill="none" transform="matrix(2.48467729658449, 0, 0, 2.60130443930149, 195, 130)" font-size="16px" text-anchor="middle"><tspan id="randomName" font-size="16px" font-family="Athletic, Impact, sans-serif" fill="#FFFFFF">JONES</tspan></text>
           <text kerning="auto" font-family="Myriad Pro" fill="none" transform="matrix(12.30398716203319, 0, 0, 12.74070280316502, 195, 320)" font-size="16px" text-anchor="middle"><tspan id="randomNumber" font-size="16px" font-family="NBA Bulls, Impact, sans-serif" fill="#FFFFFF">24</tspan></text>
@@ -516,7 +542,58 @@
       const generateBtn = document.getElementById('generateBtn');
       const randomNameElement = document.getElementById('randomName');
       const randomNumberElement = document.getElementById('randomNumber');
-      const names = ['GBKGIYRC', 'LZOVKVPA', 'SLRYX', 'GSHTM', 'PUGCNJ', 'QGYCD', 'CDJPRLJK', 'ZLYT', 'HIFMVNZ', 'ISMS', 'DQATQ', 'EXCXI', 'RWWAVQK', 'RHCG', 'EIDGOSTE', 'LTDNNTC', 'NGRLYVX', 'CYNKXUK', 'GBPJ', 'LOCB', 'LWKGRX', 'KMYYYDF', 'GACC', 'JXOUACOJ', 'LDWGMO', 'RWSM', 'YLMOB', 'ACQP', 'IADFO', 'SYDVT', 'VOXZTPJ', 'RVDIM', 'XQLD', 'XAJOLW', 'RIEFMXDT', 'WXVPYP', 'VCHC', 'TVGVGIQL', 'PRQK', 'OIPPE', 'YGQXXCP', 'OYLVXN', 'ZGHSX', 'RXBPBUV', 'SNZICZJX', 'IMYEQAX', 'CWUX', 'QDUZRFG', 'JPRURNFQ', 'UOLD', 'XZAETGJ', 'PCCMWK', 'EBPNOT', 'JPIWI', 'LKVIBH', 'NHJO', 'RTRUX', 'TKYUFZ', 'EWNBOP', 'KQGAOR', 'CEQNMF', 'AZUZJ', 'XGZCYPWG', 'LGPGKTKU', 'DAVXCBLB', 'GYCIS', 'BZLKMH', 'ZXYYJ', 'HWVIBDS', 'DQAADMY', 'CRURZ', 'MAPR', 'GWOOWWND', 'OREO', 'SPJW', 'LPCUI', 'QSWKFN', 'ZQIGFA', 'KOVXPTNR', 'DMBE', 'AMJIHTZA', 'YAOCGAVI', 'DKXQSKYQ', 'RROT', 'DTPO', 'HHHD', 'KCSY', 'LGKSNJDQ', 'DSYDZU', 'JUGDNPJ', 'KLCDD', 'THQGPPMS', 'EAQNGJRU', 'GHEO', 'PPIG', 'EGQUVRN', 'ZQYVOLUM', 'OANUBV', 'IMTKSS', 'DUKC', 'CVXDQGZS', 'PWAULFEE', 'CGCQ', 'AZYPLPYV', 'GNYVO', 'QDIDEVRB', 'GYIOL', 'ZERJUS', 'FNUOMPOO', 'DTXFLW', 'WVAGQNY', 'UBZGEVG', 'HOAW', 'ERWV', 'IUCT', 'YXAUIVQ', 'BUXYTCR', 'ASDZ', 'GPWAA', 'TJFZTPO', 'YMBCC', 'RGMCTILG', 'HSAQFHIG', 'ICPIV', 'VRMY', 'VROLBNNQ', 'XSAQF', 'BNTYGXB', 'BPML', 'PCCJZ', 'NKGKCVQ', 'RSOVWJLX', 'TZJUBKOM', 'VYSAWBQS', 'AUZA', 'KOGVCL', 'CYLYCK', 'JBBIMWH', 'BVZTRZ', 'VDKQZV', 'ZEFNFYH', 'HZYLDDX', 'LNTEJZI', 'VGWGC', 'HISNFQHY', 'ZUTCSM', 'CAVEGV', 'XITSZ', 'DOJVLMMK', 'DYOFKUZ', 'IFJXI', 'XNQYGV', 'DKPWLA', 'RLSY', 'TQTBB', 'UZGZIGL', 'CKYEAT', 'NWDKS', 'ZWIUZ', 'FCRPXN', 'UUXED', 'LBCMH', 'RMGCT', 'HRDOG', 'XBKHO', 'QGPQZOC', 'WCCFHAQ', 'WTIW', 'DSUWWS', 'JHSB', 'TGDZV', 'FIGVLA', 'NLNX', 'YCJKL', 'WIAVWSEY', 'AOKUXA', 'VSKDSAJW', 'UASYAOPQ', 'NGFGBFN', 'GBPIECE', 'TOUYQRG', 'URAVD', 'YIFEI', 'PNZEJ', 'AOOXGVMY', 'JRTUO', 'QZOEG', 'EWHOEEC', 'WPULETW', 'OCXN', 'OHMGRY', 'BDVJZ', 'KQJQ', 'RONKPYC', 'CNDFGIOL', 'OEWXFW', 'CYZTY', 'ZKEAU', 'JVBAJST', 'ZZENSHME', 'FSSIQS', 'KQYEBXI', 'BQFZVJAJ', 'WPYVDZ', 'AYCPTY', 'GJII', 'BDRL', 'NVCSSZUI', 'HMOIEQB', 'OYCKGX', 'SFFDPGJD', 'WMOZ', 'LDNDO', 'GHYWNL', 'WZINR', 'VDETN', 'APKDEQA', 'GALFSODW', 'DMBRI', 'ISNH', 'LUBNN', 'YBPPC', 'PTDAK', 'XNWSUZA', 'HIMRPGRC', 'VFWSW', 'XSRQ', 'KVLYXE', 'CLXB', 'MFMZGSF', 'JIIKBIZ', 'KRHGW', 'LRFCNZ', 'MQKNNLX', 'HPVOFVI', 'EGBS', 'BZTHKWJ', 'HIGB', 'BZTT', 'IKDEM', 'RSMWCE', 'IVZW', 'DEKUBL', 'QMAH', 'ZFJV', 'XFOER', 'GJWH', 'DFZPV', 'PZNS', 'XQEAB', 'XSVPB', 'MEMH', 'BZRRTUYH', 'FEECXMM', 'LKLM', 'QXKUZ', 'TVCTC', 'YFKUECD', 'TLTNX', 'WIMBN', 'OTEG', 'UIOT', 'LNTBDS', 'FPRLKF', 'FWZBMMFI', 'FZLPFC', 'EULXLX', 'YIBO', 'TYNXZIQU', 'DUNBQT', 'DNDTQMS', 'YFKXHHN', 'HDGWTZ', 'VDWYW', 'GEPDL', 'QKJDMGJ', 'EHCUJ', 'ZQIK', 'XOZTFU', 'ACZOPI', 'DMRA', 'OHKXYE', 'QTEPOWSQ', 'CDTAW', 'MIWMJRV', 'TJUGW', 'ZYZQQ', 'YRILIGVO', 'IIAHT', 'NWAJORN', 'KJNK', 'JAHUTARB', 'GOBMTDD', 'PLUUQZX', 'IIUBTS', 'USLZWY', 'OVPIHG', 'ZEGIVSO', 'PKHSSNL', 'HENAR', 'CFNM', 'BMLLLJC', 'UCVKEC', 'QGWVIC', 'GBVA', 'XNORBQ', 'QRIXUZA', 'YQYVNP', 'JAGLONU', 'ZZTMP', 'VUMPQ', 'LAVRHYJB', 'FWNHR', 'KVJH', 'QRLBPMGV', 'EORBXE', 'CDSID', 'PMXOEJNG', 'LFIEBFXB', 'OHCN', 'EWCHF', 'MCEOHQ', 'MBVLTZGL', 'WBBLNT', 'SRPPRHK', 'CYAXNFM', 'ZGHDO', 'ZSKGFQ', 'LQJESP', 'XXOEQ', 'AIFJ', 'JHMIX', 'CKNAJPZ', 'SBLAI', 'FGGD', 'BCJP', 'KTLL', 'VOHI', 'UZVVBOEL', 'RZBDT', 'PGALWKMG', 'SVGFKXT', 'VBCAQVBE', 'EZRW', 'TTER', 'UGDKM', 'UDRWAWG', 'VAJG', 'MBKA', 'KAUNTHR', 'UTRZDM', 'QIEREAZO', 'LEJAN', 'OLQJMB', 'UZGZIGL', 'MWNDFYQG', 'NMJYAZDU', 'MDNABO', 'GUUOU', 'WRXKIHH', 'HUYA', 'DGURKBC', 'NCXX', 'UQIPAZD', 'QNBPLX', 'TFXT', 'OLJAKHJ', 'SDFLC', 'OSYZKKD', 'LHLL', 'LXURT', 'BHVR', 'UWBEEWBZ', 'YKDTFK', 'WYWKDQ', 'NPZYHU', 'RSPLGFF', 'HTECL', 'DSEYCBQN', 'IJLD', 'AFKGTB', 'VICCIJ', 'SUUGAHUP', 'NDAWZJQ', 'EJQGDULC', 'SAIALS', 'KFDCR', 'WUOZ', 'UULCVNTF', 'VDIMPHXG', 'TICR', 'OVRUK', 'ZBCD', 'RWERKMHR', 'KWVJTLZU', 'QOMLZZNT', 'XAZUEVNC', 'FXPZ', 'ALFHL', 'AMMMTVR', 'ZDTGIX', 'AFQESB', 'JMSHLT', 'CPZH', 'BBLFVA', 'IPNCI', 'XBUWYV', 'TGEAW', 'PRSE', 'HZJUXYRU', 'RZORBKA', 'ETYEH', 'TNXGFUY', 'CNXD', 'HRGY', 'BXZLD', 'XPWM', 'HXDLXFK', 'GUEJC', 'LIPIDF', 'ZHVRHCZY', 'SGBSKSSX', 'RPOUCCVT', 'SERXIWUZ', 'IFYSFFMN', 'IXDJHL', 'IZNY', 'CLBTK', 'HIKCFDSE', 'VDQRNDVW', 'PAKOYU', 'KDMIOAZ', 'LGMKP', 'OEFDMX', 'ICEZTZ', 'CKTHMUR', 'YQLG', 'ASGAYL', 'XFCGYGYE', 'BVXFQYHG', 'AFZWH', 'OTKMRQ', 'OVZKRCXW', 'EUELNGDW', 'MHVKQ', 'ZFLOOYFG', 'SCPNA', 'QUVCVNZY', 'CIVLXL', 'ZWKWEM', 'HNGUS', 'CTMSTLM', 'VXUJBM', 'EPOWZI', 'IGCUJAF', 'TNKRWNMW', 'AWHVFD', 'YKLXTDA', 'LZVYJIF', 'UATD', 'WGPJOG', 'RPZD', 'JVYTTKA', 'ADZRDM', 'AIYDUFV', 'UTQWQPDQ', 'VOIVVA', 'EOECLAAY', 'ODLC', 'CJDZNAA', 'CYWMMV', 'WNFTFWMI', 'DRKUV', 'TCKNUH', 'FZTJ', 'PSEC', 'NESLF', 'DFJTW', 'YJEAXL', 'DAIDMG', 'NSQMGM', 'LVLRA', 'CTVHC', 'FSOTVY', 'DVSQL', 'RIPVULM', 'GCILPU', 'ASGHV', 'FHPHJTJT', 'MRZPMYD', 'AMEZ', 'OXXPSCRA', 'ELJZNV', 'SOSSFNC', 'QSXBZF', 'TXSMAG', 'DFOEIOIZ', 'TWTENCSD', 'UTXEGYCV', 'FFOMXEYD', 'GXDJTJS', 'ONZRPY', 'TVWIXVH', 'XKYI', 'UUTFTJ', 'PGHRSJ', 'RDMM', 'RFWFVXVT', 'WKOH', 'SZCALYH', 'PIFA', 'YRKJNOV', 'QUKYXPR', 'XEVK', 'MIRJN', 'XIHSB', 'QGFEINS', 'XFJLMXLD', 'RYYTOQV', 'GREKXH', 'AMMM', 'NBESWHRA', 'PKASSCZ', 'SFJMXTNL', 'KDNYA', 'UBXHK', 'WRXKEZX', 'FSXG', 'UZAX', 'YKIVEQK', 'FYXGPOXB', 'DHIVYT', 'INNKYJI', 'VKNDJKBG', 'MHQYI', 'YSDS', 'INRKS', 'WYFQ', 'WJOFCDLN', 'GWTWLPV', 'ETCXOPDM', 'PIEMXX', 'WURL', 'IQMXGKJ', 'LECZLAFT', 'YYXKI', 'AJWMZ', 'GONEE', 'HSSDRWX', 'JFHWNSHN', 'LYYMCEIN', 'FYYSS', 'NOIBPP', 'HXTYQHXL', 'FPZAUHQZ', 'BSKHNJ', 'VICXIL', 'MNGDOQWG', 'QZTUDKK', 'XOJH', 'MDYYQ', 'JZTJB', 'KUPLHP', 'NNPHE', 'XIZC', 'JUON', 'MGAYN', 'OUZPSPQ', 'LIOOXCYL', 'HUMUBJ', 'VYJBNB', 'RSZEPYZ', 'TTZF', 'UWRIDUD', 'AAFWUOCF', 'UFXULGES', 'GMNEF', 'KKMHNURO', 'MVXRTUND', 'ZPWFIG', 'PJOTUD', 'YDPPFU', 'RWGED', 'XZFDE', 'YCQNIX', 'VWEOMMF', 'IJMH', 'GWNXPN', 'XXESG', 'MUIND', 'MQVOCJXQ', 'MNOTBAOW', 'BOSCLXD', 'TMYUXXGE', 'RATZTHW', 'HZQKRL', 'BRGQHV', 'GGTMND', 'ZJKO', 'CLKYQVHZ', 'EIJCXQ', 'XIPPGJ', 'FQKUWEY', 'UBOCNI', 'DOOD', 'ZHYNJWL', 'WRAYTU', 'DASKDKQC', 'AIBQCNAS', 'CKEQWYMS', 'HGMVCOFW', 'HUFJ', 'UUPFD', 'WMACJS', 'GCJGXWJ', 'XKZZXUD', 'PHHYOZEL', 'UXVMN', 'BBAC', 'UAFTDN', 'QPRONSBJ', 'UTAZNO', 'PXLPHS', 'YDJC', 'QWGKKSER', 'JCRFPSG', 'HHDYW', 'ZUTK', 'MYOE', 'IOJPGTH', 'GLWRX', 'QGMVE', 'BCDFBOW', 'KLGWTAN', 'VLSJWO', 'EIYDWVNN', 'IEBLYCMB', 'ZZMT', 'BIHTVV', 'WQAW', 'GLKUCHC', 'UBKCD', 'RGTNJ', 'HOPGIX', 'PVWH', 'JPTA', 'LBNO', 'SDDZTFA', 'XJVN', 'XFHSGP', 'JEJXOQ', 'RDBOAVON', 'JVCVST', 'GDRXVKYY', 'CJMETG', 'AIBFOGLB', 'YPVP', 'FXZO', 'LCAASAV', 'KOHPIXLZ', 'ZQGXWGSZ', 'GPSOGQJR', 'DYTHT', 'CCJUO', 'JCLKPSP', 'HDFGOWM', 'KHMRNOYW', 'LGQO', 'OASCO', 'NOXJ', 'VOOLI', 'DVXABAO', 'MXOZ', 'WNVCBPL', 'ISQSYS', 'LJESRYSK', 'ZOUZBFEC', 'SZLH', 'OFOANWN', 'MSSLK', 'XOHVEO', 'ECYT', 'FZIH', 'JGZL', 'OWETII'];
+      const names = [
+        'Gabrielle', 'Lozano', 'Solerix', 'Gustham', 'Pugnetti', 'Quincy', 'Cedric', 'Zalyt', 'Hoffman', 'Ismos', 
+        'Dqatto', 'Exconi', 'Rowvak', 'Rochard', 'Eidoste', 'Latona', 'Nagrelov', 'Cynkson', 'Gibson', 'Lochner',
+        'Lewrick', 'Kemyrov', 'Graccus', 'Joucanon', 'Ledmore', 'Rawsom', 'Ylmore', 'Acquep', 'Iadro', 'Sydvent',
+        'Voxton', 'Rivdon', 'Quilland', 'Xajol', 'Riemond', 'Wexler', 'Vachier', 'Tivogal', 'Parquin', 'Oppen',
+        'Yorgsen', 'Olivan', 'Zighson', 'Rexburg', 'Sanzeri', 'Imrie', 'Cowan', 'Quedrow', 'Jurran', 'Ulland',
+        'Xavier', 'Pacman', 'Ebner', 'Joplin', 'Leving', 'Nhoan', 'Rutrex', 'Takyo', 'Ewenberg', 'Kaganor',
+        'Cenmor', 'Azurin', 'Cypwell', 'Langford', 'Davison', 'Garrick', 'Belmont', 'Zeylor', 'Howard', 'Darmond',
+        'Cruger', 'Mapril', 'Goodwin', 'Orrell', 'Spencer', 'Laplace', 'Quinsey', 'Zagovia', 'Kovax', 'Denmark',
+        'Amato', 'Yanez', 'Draxon', 'Roth', 'Draper', 'Hendry', 'Kersey', 'Lanskord', 'Dreslin', 'Jugdall',
+        'Kildren', 'Thorpe', 'Eganor', 'Gheoran', 'Pippin', 'Egrove', 'Zvolman', 'Onubi', 'Imtash', 'Ducard',
+        'Cavendish', 'Paulsen', 'Colgrave', 'Azylan', 'Gervin', 'Quade', 'Giover', 'Zerjus', 'Furnomo', 'Draxler',
+        'Waverly', 'Ubzen', 'Howarth', 'Erwin', 'Lucett', 'Yaxley', 'Buxton', 'Astor', 'Gowan', 'Telford',
+        'Yambach', 'Rogmont', 'Hastings', 'Icaro', 'Vermy', 'Vroland', 'Saxby', 'Bentley', 'Bramell', 'Price',
+        'Norkov', 'Rosswell', 'Tazman', 'Vysard', 'Auzo', 'Kogan', 'Cylwick', 'Jobbins', 'Brevard', 'Vandrel',
+        'Zenith', 'Hazeldine', 'Linton', 'Vanguard', 'Henslow', 'Zutman', 'Cavell', 'Xitsen', 'Donovan', 'Dyson',
+        'Fischer', 'Xenro', 'Drakewell', 'Roslyn', 'Taubert', 'Uzman', 'Keyart', 'Newdock', 'Zwinslow', 'Farnham',
+        'Ulric', 'Lambert', 'Remington', 'Harding', 'Xabier', 'Quigley', 'Warwick', 'Whitman', 'Dussel', 'Jensen',
+        'Tegard', 'Figaro', 'Nolan', 'Yorkell', 'Waversey', 'Oakwood', 'Vaskin', 'Ussop', 'Garron', 'Tourney',
+        'Ifen', 'Parzen', 'Axwell', 'Jerrick', 'Quorum', 'Ewholt', 'Wulfram', 'Oxner', 'Holmgren', 'Bedford',
+        'Kingston', 'Ronkow', 'Condor', 'Owenby', 'Cyzar', 'Zekal', 'Jovan', 'Zenshire', 'Fessard', 'Keyber',
+        'Balfour', 'Wyper', 'Ayden', 'Giles', 'Bardell', 'Novak', 'Hamon', 'Ockham', 'Schneider', 'Wozniak',
+        'Venton', 'Apkedal', 'Galford', 'Dumbrill', 'Ishan', 'Luben', 'Ybarra', 'Peters', 'Tardak', 'Xenosa',
+        'Himura', 'Vefsen', 'Xeron', 'Kovley', 'Clarke', 'Manfred', 'Jimenez', 'Kerrigan', 'Lorfax', 'Macken',
+        'Havell', 'Eggers', 'Braxton', 'Higgins', 'Bostwick', 'Ikerd', 'Rosmer', 'Iverson', 'Dekker', 'Qumah',
+        'Zefran', 'Xavier', 'Gresham', 'Defazio', 'Peterson', 'Quabec', 'Xavier', 'Maxim', 'Brazier', 'Feehan',
+        'Latham', 'Quinn', 'Tavistock', 'Yukel', 'Tollman', 'Wimberly', 'Otero', 'Upton', 'Lantau', 'Frakes',
+        'Frazier', 'Eulix', 'Yibara', 'Tynson', 'Dunbar', 'Denton', 'Yorkman', 'Hodges', 'Valdez', 'Gedlow',
+        'Kendrick', 'Echo', 'Zivik', 'Oxford', 'Acosta', 'Demar', 'Ochoa', 'Quepos', 'Cartwell', 'Morris',
+        'Tjugan', 'Zyzak', 'Yarlin', 'Ilari', 'Newman', 'Kanek', 'Jarret', 'Gobin', 'Plummer', 'Tiburcio',
+        'Usland', 'Osorio', 'Zegovic', 'Parkson', 'Henderson', 'Coffman', 'Miller', 'Ulrich', 'Quinlan', 'Gervais',
+        'Gervaise', 'Jagger', 'Zentner', 'Vumpal', 'Lavigne', 'Fenrir', 'Kavan', 'Quarles', 'Orbeck', 'Cedricson',
+        'Pomeroy', 'Lefebvre', 'Ohlin', 'Ewchard', 'Michaels', 'Beltran', 'Webber', 'Sarpong', 'Cyannis', 'Zagreb',
+        'Zaskin', 'Lopez', 'Xavier', 'Aitken', 'Jameson', 'Clark', 'Sablon', 'Foggard', 'Bishop', 'Katlow',
+        'Vohlin', 'Uzvel', 'Rizden', 'Pagano', 'Savage', 'Vickers', 'Ezren', 'Teter', 'Gundam', 'Udrell',
+        'Vaughn', 'Majors', 'Kaunter', 'Utriz', 'Quiero', 'Lejan', 'Olquist', 'Uzgarn', 'Mundy', 'Navas',
+        'Mendosa', 'Guerin', 'Wrexham', 'Huyard', 'Durgan', 'Nixson', 'Upton', 'Qubec', 'Quinby', 'Taft',
+        'Oljack', 'Saffold', 'Osborn', 'Lilley', 'Luxford', 'Behr', 'Uweber', 'Yoder', 'Wyatt', 'Napier',
+        'Rispoli', 'Hatcher', 'Devan', 'Isbell', 'Armitage', 'Viccini', 'Sugahara', 'Nadar', 'Enriquez', 'Saillan',
+        'Kaufman', 'Woolsey', 'Ulven', 'Videmar', 'Ticari', 'Overton', 'Zebedee', 'Rokem', 'Kovitz', 'Qomlen',
+        'Xavier', 'Frazoni', 'Alfonso', 'Amory', 'Zentak', 'Farquad', 'Jamison', 'Capshaw', 'Belford', 'Ipman',
+        'Xavier', 'Tegan', 'Prowse', 'Hazard', 'Rizor', 'Ettore', 'Trent', 'Nixfield', 'Connors', 'Hargrove',
+        'Baxter', 'Xippon', 'Farquhar', 'Uboldi', 'Dodds', 'Zheng', 'Wray', 'Daskins', 'Ibanez', 'Carwyn',
+        'Hayden', 'Hufford', 'Upford', 'Wyman', 'Goddard', 'Xanders', 'Phillips', 'Usher', 'Babac', 'Ufton',
+        'Quarrie', 'Utazzo', 'Phelps', 'Yardley', 'Quiggin', 'Jercan', 'Hodway', 'Zutler', 'Moyes', 'Joplin',
+        'Garlow', 'Quimby', 'Baldwin', 'Kellogg', 'Valser', 'Eidwin', 'Ibley', 'Zentman', 'Bivens', 'Warshaw',
+        'Glick', 'Ulbricht', 'Rigton', 'Hopkins', 'Parlow', 'Joppa', 'Lombard', 'Saddler', 'Xavier', 'Jeffers',
+        'Radovan', 'Jarvis', 'Godfrey', 'Clement', 'Aubigny', 'Yarpe', 'Foxen', 'Lacasse', 'Kohler', 'Zagros',
+        'Goswick', 'Dytham', 'Cadoux', 'Jolliffe', 'Hargrave', 'Krammer', 'Langley', 'Osborne', 'Noxon', 'Vollin',
+        'Duvall', 'Moxon', 'Winfield', 'Issacson', 'Lajos', 'Zoukas', 'Selwyn', 'Ofori', 'Mossley', 'Xover',
+        'Ecyra', 'Fazio', 'Jozel', 'Owens'
+      ];
 
       let animationInterval;
       let changeCount = 0;
