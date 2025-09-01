@@ -20,7 +20,7 @@
       margin: 0;
       overflow: hidden;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #030325;
+      background: #111124;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       display: flex;
@@ -33,7 +33,7 @@
 
     /* --- Enhanced lighter liquid glow from bottom --- */
     body {
-      background: #030325;
+      background: #111124;
       position: relative;
       z-index: 0;
       will-change: transform;
@@ -49,7 +49,7 @@
       opacity: 0.2;
     }
     body::before {
-      background: radial-gradient(circle at 50% 100%, rgba(147, 197, 253, 0.5) 0%, transparent 80%);
+      background: radial-gradient(circle at 50% 100%, rgb(51 0 255) 0%, transparent 80%);
       animation: liquidFlow1 16s ease-in-out infinite;
     }
     body::after {
@@ -71,7 +71,7 @@
     /* --- 3D Fabric Wave Background --- */
     #vanta-bg {
       position: absolute;
-      opacity: 50%;
+      opacity: 40%;
       top: -10px;
       left: 0px;
       width: 1920px;
