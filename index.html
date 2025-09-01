@@ -1,10 +1,176 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="google-site-verification" content="abc123XYZ456..." />
-  <title>SpeedPix Pro – Sublimation Auto Resize Software</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="SpeedPix Pro — Sublimation auto-resize and Photoshop automation. Batch resize, smart-object paste, fast exports." />
+  <meta name="google-site-verification" content="googlec1de389aa37f4108" />
+  <title>SpeedPix Pro — Sublimation Auto Resize</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Layout: single-screen, no scroll --- */
+    html,body{height:100%;}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      height:100vh; /* lock to viewport height */
+      overflow:hidden; /* no scroll */
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg, #0f172a 0%, #071028 60%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+
+    /* --- Card --- */
+    .card{
+      width:min(1100px, 96%);
+      height:min(720px, 86vh);
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      padding:28px;
+      align-items:center;
+    }
+
+    /* --- Left content --- */
+    .brand{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .logo{
+      width:84px;height:84px;border-radius:16px;
+      background:linear-gradient(135deg,#6ee7b7,#3b82f6);
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#052035;font-size:26px;
+      box-shadow: 0 6px 18px rgba(59,130,246,0.16);
+    }
+    h1{margin:10px 0 6px;font-size:28px;line-height:1.05;color:#fff}
+    p.lead{margin:0 0 18px;color:#c8d6ea;opacity:0.92}
+
+    .features{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:12px;margin-top:8px}
+    .feature{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;font-size:14px}
+    .feature strong{display:block;color:#fff;margin-bottom:6px}
+
+    .cta-row{display:flex;gap:12px;margin-top:20px;align-items:center}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600;
+      background:#0ea5a4;color:white;text-decoration:none;box-shadow:0 8px 24px rgba(14,165,164,0.14);
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.08);color:#d9e9ff}
+
+    .meta{margin-top:12px;color:#9fb7d6;font-size:13px}
+
+    /* --- Right panel (visual + details) --- */
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      padding:18px;border-radius:12px;height:100%;display:flex;flex-direction:column;justify-content:space-between;
+    }
+
+    .preview{
+      flex:1;border-radius:10px;background:linear-gradient(180deg,#071428,#021022);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+      box-shadow: inset 0 -40px 80px rgba(2,6,23,0.6);
+    }
+    .preview img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 30px rgba(3,7,18,0.6));}
+
+    .panel-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+    .small{font-size:13px;color:#9fb7d6}
+
+    /* --- Footer badges --- */
+    .badges{display:flex;gap:8px;align-items:center}
+    .badge{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;font-size:13px}
+
+    /* --- Responsive adjustments (still single screen) --- */
+    @media (max-width:980px){
+      .card{grid-template-columns:1fr;gap:18px;height:min(820px,92vh)}
+      .preview{height:340px}
+    }
+
+    /* --- Small helper --- */
+    .muted{color:#9fb7d6;font-size:13px}
+  </style>
 </head>
 <body>
-  <h1>Welcome to SpeedPix Pro</h1>
+  <div class="card" role="main">
+    <div>
+      <div class="brand">
+        <div class="logo">SP</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <h1>SpeedPix Pro</h1>
+            <div style="font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);color:#bfe3ff">Beta</div>
+          </div>
+          <p class="lead">Sublimation auto-resize & Photoshop automation — batch resize, smart-object updates, and rapid exports for apparel mockups.</p>
+        </div>
+      </div>
+
+      <div class="features" style="margin-top:20px;">
+        <div class="feature"><strong>Auto Resize</strong>Scale PSD mockups by size keywords (S,M,L,XL) automatically.</div>
+        <div class="feature"><strong>Smart Objects</strong>Copy and paste design groups into template Smart Objects reliably.</div>
+        <div class="feature"><strong>Batch Rename</strong>Rename hundreds of PSDs using CSV rules & templates.</div>
+        <div class="feature"><strong>Fast Export</strong>Export multiple color modes and formats in one click.</div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="#download" id="downloadBtn">Download (.exe)</a>
+        <a class="btn secondary" href="#github" id="repoBtn">View on GitHub</a>
+      </div>
+
+      <div class="meta">Tip: Use the GitHub Releases page to host the installer (recommended).</div>
+
+      <div style="margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <div class="badges">
+          <div class="badge">Windows</div>
+          <div class="badge">Photoshop</div>
+          <div class="badge">Batch</div>
+        </div>
+        <div style="margin-left:auto" class="muted">v2.7.0 • Released: 2025-08-31</div>
+      </div>
+    </div>
+
+    <aside class="panel">
+      <div class="preview" aria-hidden="true">
+        <!-- Replace this <img> src with a real screenshot or mockup image hosted in your repo -->
+        <img src="https://raw.githubusercontent.com/CodeNinja-X/SpeedPix-Releases/main/preview-placeholder.png" alt="SpeedPix preview" />
+      </div>
+
+      <div class="panel-footer">
+        <div style="display:flex;flex-direction:column">
+          <div class="small">Quick actions</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a class="btn" href="#download">Download</a>
+            <a class="btn secondary" href="#docs">Docs</a>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="small">Made for printers & designers</div>
+          <div class="small" style="margin-top:6px">Contact: hello@speedpix.local</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // Lightweight behaviors: replace links with real targets
+    document.getElementById('downloadBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      // TODO: change to your real GitHub Release raw URL
+      window.location.href = 'https://github.com/CodeNinja-X/SpeedPix-Releases/releases/download/v2.7.0/SpeedPix-setup.exe';
+    });
+    document.getElementById('repoBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      window.open('https://github.com/CodeNinja-X/SpeedPix-Releases', '_blank');
+    });
+  </script>
 </body>
 </html>
