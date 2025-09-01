@@ -20,7 +20,7 @@
       margin: 0;
       overflow: hidden;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: #f1f5f9;
+      background: #030325;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       display: flex;
@@ -33,7 +33,7 @@
 
     /* --- Enhanced lighter liquid glow from bottom --- */
     body {
-      background: #0f172a;
+      background: #030325;
       position: relative;
       z-index: 0;
       will-change: transform;
@@ -71,6 +71,7 @@
     /* --- 3D Fabric Wave Background --- */
     #vanta-bg {
       position: absolute;
+      opacity: 50%;
       top: -10px;
       left: 0px;
       width: 1920px;
@@ -90,7 +91,7 @@
       width: min(1300px, 90%);
       max-height: 88vh;
       border-radius: 24px;
-      background: linear-gradient(313deg, rgb(83 19 195 / 28%), rgb(255 255 255 / 0%));
+      background: linear-gradient(313deg, rgb(69 0 255 / 0%), rgb(255 255 255 / 0%));
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       box-shadow: 0 20px 60px rgba(2, 6, 23, 0.9);
@@ -126,9 +127,10 @@
     }
     p.lead {
       margin: 0 0 24px;
-      color: #c5d0db;
+      color: #9f9f9f;
       font-size: 16px;
       line-height: 1.6;
+      max-width: 440px;
       opacity: 1;
     }
 
@@ -144,7 +146,8 @@
       -webkit-backdrop-filter: blur(12px);
       padding: 16px;
       border-radius: 14px;
-      font-size: 15px;
+      line-height: 25px;
+      font-size: 14px;
       border: 1px solid rgba(255,255,255,0.25);
       transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
       position: relative;
@@ -324,7 +327,7 @@
       padding: 10px 14px;
       border-radius: 12px;
       font-size: 14px;
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(31, 31, 31, 0.25);
       transition: background 0.4s ease, transform 0.4s ease;
     }
     .badge:hover {
@@ -372,7 +375,7 @@
           <div style="display:flex;align-items:center;gap:14px;">
             <h1>SpeedPix Pro</h1>
           </div>
-          <p class="lead">Revolutionize your sublimation workflow with advanced Photoshop automation: seamless batch resizing, intelligent smart-object integration, and lightning-fast exports for professional apparel mockups.</p>
+          <p class="lead">Revolutionize your sublimation workflow with advanced Photoshop automation: seamless batch resizing</p>
         </div>
       </div>
 
@@ -412,7 +415,7 @@
           class="loaded"
           id="previewSvg"
         >
-          <path fill-rule="evenodd" stroke="rgb(255, 255, 255)" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="rgb(0, 0, 0)"
+          <path fill-rule="evenodd" stroke="rgb(255, 255, 255)" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="rgb(37, 37, 37)"
             d="M384.614,496.167 C257.354,495.889 130.055,495.611 2.795,495.334 C2.795,427.022 2.795,358.689 2.795,290.377 C2.795,269.711 4.386,205.395 4.386,205.395 C4.386,205.395 62.013,180.085 28.250,36.264 C62.186,25.156 96.132,14.045 130.068,2.937 C136.696,9.047 143.326,15.158 149.955,21.267 C163.413,28.528 221.847,29.022 236.659,22.100 C243.552,15.991 250.448,9.880 257.341,3.770 C271.241,6.025 351.909,31.224 359.159,37.930 C347.835,84.811 347.140,189.897 386.205,207.061 C386.205,303.420 384.614,399.808 384.614,496.167 Z"/>
           <text kerning="auto" font-family="Myriad Pro" fill="none" transform="matrix(2.48467729658449, 0, 0, 2.60130443930149, 195, 130)" font-size="16px" text-anchor="middle"><tspan id="randomName" font-size="16px" font-family="Athletic, Impact, sans-serif" fill="#FFFFFF">JONES</tspan></text>
           <text kerning="auto" font-family="Myriad Pro" fill="none" transform="matrix(12.30398716203319, 0, 0, 12.74070280316502, 195, 320)" font-size="16px" text-anchor="middle"><tspan id="randomNumber" font-size="16px" font-family="NBA Bulls, Impact, sans-serif" fill="#FFFFFF">24</tspan></text>
