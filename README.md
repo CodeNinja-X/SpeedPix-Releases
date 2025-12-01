@@ -1,22 +1,50 @@
-# SpeedPix-Releases
-SpeedPix Pro is a desktop app that automates Photoshop workflows for designers and print shops. It speeds up grading, resizing, Smart Object editing, and batch renaming of PSD templates—saving time and reducing repetitive tasks. Download the latest release below to get started!
+SpeedPix Pro — Sublimation Automation Software for Photoshop
 
+SpeedPix Pro is a desktop automation tool built for sublimation printing, apparel production, and PSD template automation.
+It speeds up professional workflows such as grading, batch resizing, Smart Object updating, auto-renaming, exporting, and bulk template processing using Photoshop COM automation.
 
-# SpeedPix Pro
+This tool is designed for designers, print shops, POD businesses, and high-volume sublimation production teams that want to eliminate repetitive tasks and increase output speed.
 
-SpeedPix Pro is a **sublimation automation software** for Photoshop.  
-It helps with **batch resizing, auto renaming, and grading** for printing.
+✨ What SpeedPix Pro Automates
 
+SpeedPix Pro includes advanced automation modules:
 
----
+✔ Auto Resizing (Auto Scale)
 
-## 📥 Download
+Automatically resizes designs based on size identifiers in filenames using custom JSON scaling presets for apparel (XS–5XL, youth sizes, etc.).
 
-[![Download SpeedPix Pro](https://img.shields.io/badge/Download-SpeedPix_Pro_-blue?style=for-the-badge)](https://drive.google.com/uc?id=1k6jGHZgvAtaKzMQDoZCHrvdYIBZbmiwv&export=download)
+✔ Grading Automation
 
+Copies component layer groups into matching Smart Objects across multiple PSD templates, including:
 
-👉 Click the button above to download the latest `.exe` build.
+alignment
 
----
-## 🆕 Versions
-- **v2.6.10** – Latest release
+unclipping / unlinking
+
+proportional resizing
+
+background updating
+
+✔ Auto Renaming
+
+Batch-rename PSD files using CSV data (labels, secondary names, SKUs) and update:
+
+text layers inside Smart Objects
+
+scaled text based on max width rules
+
+✔ Smart Object Automation
+
+Fully automated updates of:
+
+design layers
+
+text fields
+
+layer groups
+
+multi-template workflows
+
+✔ Batch Exporting
+
+Export in JPG, PNG, PDF, TIFF with custom color modes, DPI, and naming formats.
