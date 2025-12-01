@@ -48,3 +48,33 @@ multi-template workflows
 ✔ Batch Exporting
 
 Export in JPG, PNG, PDF, TIFF with custom color modes, DPI, and naming formats.
+
+📌 Why It’s Useful for Sublimation
+
+SpeedPix Pro is specifically designed for sublimation and apparel printing, solving common industry problems:
+
+resizing multiple templates at once
+
+preparing dozens of sizes per design
+
+fixing Smart Objects automatically
+
+renaming files using production data
+
+speeding up bulk mockup creation
+
+exporting final print-ready files
+
+This makes it a powerful sublimation automation software unlike anything currently available.
+
+📥 Download SpeedPix Pro
+
+👉 Click to download the latest .exe release.
+
+🆕 Latest Version
+
+v2.6.10 — current release
+
+📚 Documentation
+
+Coming soon.
